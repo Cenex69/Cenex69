@@ -1,20 +1,85 @@
-import discord, time, json, os, random, urllib.request, re, datetime, asyncpraw
+import discord, time, json, os, random, urllib.request, re, datetime, asyncpraw, tracemalloc
 from settings import *
 from discord.ui import Button, Select, View
 from discord import Member, Guild, Embed, Status, Colour, ButtonStyle
 from discord.ext import commands
+amtoffivestars = 0
+fourstaramt = 0
+count = 1
+count2 = 1
+fivestarstr = None
+fourstarstr = "Bennett x0 (maybe ur really unlucky)"
 setting = settings()
-ai = ai()
 btstyle = buttonstyle()
+ai = ai()
 errors = errors()
 conf = confirmations()
-bot = commands.Bot(setting.prefix())
-
+bot = commands.Bot(setting.prefix(), help_command=None)
+try:
+    tracemalloc.start()
+except:
+    pass
+finally:
+    pass
+snapshot = tracemalloc.take_snapshot()
+top_stats = snapshot.statistics('lineno')
+for stat in top_stats[:10000]:
+    print(stat)
 
 @bot.event
 async def on_ready():
     print("LOGGED IN AS {0.user}".format(bot))
     await bot.change_presence(status=Status.idle, activity=discord.Game(setting.activity()))
+
+
+@commands.has_permissions(kick_members=True)
+@bot.command()
+async def kick(ctx, member:Member, reason:str=None):
+    toMember = Embed(
+       title="Kick",
+       description=f"You were kicked by {setting.user(ctx.author)}.",
+       colour=Colour.purple()
+    )
+    toMod = Embed(
+        title="Kick",
+        description=f"{member} was kicked from this server",
+        colour=Colour.purple()
+    )
+    if reason is None:
+        toMember.add_field(name="Reason:", value="No reason provided")
+        toMod.add_field(name="Reason:", value="No reason provided")
+    else:
+        toMember.add_field(name="Reason:", value=reason)
+        toMod.add_field(name="Reason:", value=reason)
+    toMember.set_footer(text=f"Server: {ctx.guild.name}")
+    await member.kick(reason=reason)
+    await ctx.author.send(embed=toMod)
+    await member.send(embed=toMember)
+
+
+@commands.has_permissions(ban_members=True)
+@bot.command()
+async def ban(ctx, member:Member, reason:str=None):
+    toMember = Embed(
+       title="Ban",
+       description=f"You were banned by {setting.user(ctx.author)}.",
+       colour=Colour.purple()
+    )
+    toMod = Embed(
+        title="Kick",
+        description=f"{member} is banned from this server",
+        colour=Colour.purple()
+    )
+    if reason is None:
+        toMember.add_field(name="Reason:", value="No reason provided")
+        toMod.add_field(name="Reason:", value="No reason provided")
+    else:
+        toMember.add_field(name="Reason:", value=reason)
+        toMod.add_field(name="Reason:", value=reason)
+    toMember.set_footer(text=f"Server: {ctx.guild.name}")
+    await member.ban(reason=reason)
+    await ctx.author.send(embed=toMod)
+    await member.send(embed=toMember)
 
 
 @commands.has_permissions(administrator=True)
@@ -155,7 +220,7 @@ async def announce(ctx, desc1, desc2=None, desc3=None, desc4=None, desc5=None, d
     btn1d = Button(label="Go ahead", style=btstyle.green(), disabled=True)
     btn2 = Button(label="Go back", style=btstyle.red())
     btn2d = Button(label="Go back", style=btstyle.red(), disabled=True)
-    byUSER = Button(label=f"Announced by: {setting.user(ctx.author)}", disabled=True)
+    byUSER = Button(label=f"Announcement by: {setting.user(ctx.author)}", disabled=True)
     view1 = View()
     view2 = View()
     view3 = View()
@@ -173,6 +238,7 @@ async def announce(ctx, desc1, desc2=None, desc3=None, desc4=None, desc5=None, d
         colour=Colour.blue()
     )
     async def btncallback(interaction):
+        await ctx.send("@everyone")
         await ctx.send(embed=announcementembed, view=view3)
         await msg.edit(embed=conf.procresult(channel=ctx.channel.name, server=ctx.guild.name), view=view2)
 
@@ -244,160 +310,428 @@ async def subreddit(ctx, subreddit):
 
 
 @bot.command()
-async def chat(ctx, type=None):
-    reddit = asyncpraw.Reddit(
-        client_id=setting.credentials("id"),
-        client_secret=setting.credentials("secret"),
-        username=setting.credentials("username"),
-        user_agent=setting.credentials("agent")
+async def msg(ctx, user:Member, desc1, desc2=None, desc3=None, desc4=None, desc5=None, desc6=None, desc7=None, desc8=None, desc9=None, desc10=None, desc11=None, desc12=None, desc13=None, desc14=None, desc15=None, desc16=None, desc17=None, desc18=None, desc19=None, desc20=None, desc21=None, desc22=None, desc23=None, desc24=None, desc25=None, desc26=None, desc27=None, desc28=None, desc29=None, desc30=None, desc31=None):
+    await user.send(ai.find_desc(desc1, desc2, desc3, desc4, desc5, desc6, desc7, desc8, desc9, desc10, desc11, desc12, desc13, desc14, desc15, desc16, desc17, desc18, desc19, desc20, desc21, desc22, desc23, desc24, desc25, desc26, desc27, desc28, desc29, desc30, desc31))
+    await ctx.send("Msg sent")
+
+
+@bot.command()
+async def wish(ctx):
+    five_star_gif = "https://images-ext-2.discordapp.net/external/ggZ8CV-6-HWXkbR24vvDNiAcWKMzRMcHzCouO9N6McI/https/i.imgur.com/BV5o91i.gif"
+    four_star_gif = "https://images-ext-1.discordapp.net/external/EhNB8Z6ZqgDNsAuekI0YOQdUMOXcfhX3Vg-qmq7yKKc/https/i.imgur.com/nWHBRCJ.gif"
+    standard_banner_png = "https://cdn.discordapp.com/attachments/885033730782158930/951726634334052422/standard_banner.png"
+    raiden_banner_png = "https://cdn.discordapp.com/attachments/885033730782158930/951728076952326154/raiden_banner.png"
+    kokomi_banner_png = "https://cdn.discordapp.com/attachments/885033730782158930/951728194883559454/kokomi.png"
+    weapon_banner_png = "https://cdn.discordapp.com/attachments/885033730782158930/951728216459083786/Screenshot_2022-03-11_at_11.23.51_AM.png"
+    cool_steel_png = "https://static.wikia.nocookie.net/gensin-impact/images/4/40/Weapon_Cool_Steel_3D.png/revision/latest/scale-to-width-down/579?cb=20201009191834"
+    harbinger_png = "https://static.wikia.nocookie.net/gensin-impact/images/2/23/Weapon_Harbinger_of_Dawn_3D.png/revision/latest/scale-to-width-down/550?cb=20201010022249"
+    debate_png = "https://static.wikia.nocookie.net/gensin-impact/images/1/1f/Weapon_Debate_Club_3D.png/revision/latest/scale-to-width-down/565?cb=20201010140150"
+    white_tassel_png = "https://static.wikia.nocookie.net/gensin-impact/images/f/f0/Weapon_White_Tassel_3D.png/revision/latest/scale-to-width-down/592?cb=20201118022622"
+    black_tassel_png = "https://static.wikia.nocookie.net/gensin-impact/images/3/37/Weapon_Black_Tassel_3D.png/revision/latest/scale-to-width-down/601?cb=20201118022448"
+    thrilling_tales_png = "https://static.wikia.nocookie.net/gensin-impact/images/3/30/Weapon_Thrilling_Tales_of_Dragon_Slayers_3D.png/revision/latest/scale-to-width-down/436?cb=20201010180555"
+    xinyan_png = "https://www.gamespot.com/a/uploads/scale_landscape/1599/15997278/3897720-githumb.jpeg"
+    bennett_png = "https://www.siliconera.com/wp-content/uploads/2020/12/genshin-impact-should-you-pull-on-albedo-banner-1.jpg"
+    kujou_sara_png = "https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/styles/1200/public/media/image/2021/08/genshin-impact-2453817.jpg?itok=nyWNH4pN"
+    beidou_png = "https://assets.gamepur.com/wp-content/uploads/2021/10/23180926/Beidou-e1644819533687.jpg"
+    xingqiu_png = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKx2nEcFqjn9w0R-ExdhzM-guTw9hjItgGitmulolutYBAonbZ2AEppHleYwbH4aOL_70&usqp=CAU"
+    kokomi_png = "https://assets2.rockpapershotgun.com/genshin-impact-sangonomiya-kokomi.jpg/BROK/resize/1920x1920%3E/format/jpg/quality/80/genshin-impact-sangonomiya-kokomi.jpg"
+    raiden_png = "https://www.insidesport.in/wp-content/uploads/2022/01/dsdsfzsdgsg.jpg?w=1024"
+    diluc_png = "https://www.alphr.com/wp-content/uploads/2021/04/Diluc-5.png"
+    qiqi_png = "https://preview.redd.it/r2kf907juuv71.jpg?width=640&crop=smart&auto=webp&s=bcd9056a1e1d2d4393c0a9ed7a31027435d342a8"
+    mona_png = "https://www.siliconera.com/wp-content/uploads/2020/10/Genshin-Impact-Banner.jpg"
+    keqing_png = "https://pbs.twimg.com/media/EugPWhxUYAQGQ_w.jpg"
+    jean_png = "https://i2.wp.com/www.alphr.com/wp-content/uploads/2021/05/How-to-Play-Jean-in-Genshin-Impact-1.png?resize=1200%2C1052&ssl=1"
+    get_cool_steel = Embed(
+        title="Wish",
+        description="Cool Steel",
+        colour=Colour.blue()
     )
-    if str(type) == "None":
-        hellorandomtext1 = random.choice(['Hallo, ', 'Hi, ', 'Hello, ', 'Hamlo, ', 'Hai, ', 'no greeting for you, '])
-        title = hellorandomtext1 + setting.user(ctx.author)
-        description = f"{hellorandomtext1.split(',')[0]} {setting.user(ctx.author)}, I am your personal chatbot. Feel free to chat whatever you want with me."
-        button1 = Button(label="Hi", style=btstyle.blue())
-        button2 = Button(label="Hru?", style=btstyle.blue())
-        button3 = Button(label="What do you wanna chat about?", style=btstyle.blue())
-        button4 = Button(label="End interaction", style=btstyle.gray())
-        button5 = Button(label="Good", style=btstyle.green())
-        button6 = Button(label="Average/Okay", style=btstyle.blue())
-        button7 = Button(label="Bad", style=btstyle.red())
-        button8 = Button(label=f"Check some posts at r/{randsub}", style=btstyle.blue())
-        button9 = Button(label="Go to r/cute", style=btstyle.green())
-        button10 = Button(label="Next post", style=btstyle.green())
-        button11 = Button(label="Go back", style=btstyle.blue())
-        button12 = Button(label="Next meme", style=btstyle.blue())
-        halloview = View()
-        hallo2view = View()
-        hruview = View()
-        hru2view = View()
-        hru3view = View()
-        cuteview = View()
-        memeview = View()
-        wdycaview = View()
-        memeview.add_item(button12)
-        memeview.add_item(button11)
-        memeview.add_item(button4)
-        cuteview.add_item(button10)
-        cuteview.add_item(button11)
-        cuteview.add_item(button4)
-        hru3view.add_item(button8)
-        hru3view.add_item(button9)
-        hru3view.add_item(button4)
-        hru2view.add_item(button3)
-        hru2view.add_item(button4)
-        hruview.add_item(button5)
-        hruview.add_item(button6)
-        hruview.add_item(button7)
-        hruview.add_item(button4)
-        halloview.add_item(button1)
-        halloview.add_item(button2)
-        halloview.add_item(button3)
-        halloview.add_item(button4)
-        hallo2view.add_item(button2)
-        hallo2view.add_item(button3)
-        hallo2view.add_item(button4)
-        HalloEmbed = Embed(
-            title=title,
-            description=description,
-            colour=Colour.blue()
-        )
-        HalloEmbed2 = Embed(
-            title=f"{random.choice(['Hallo', 'Hello'])} {setting.user(ctx.author)}",
-            colour=Colour.blue()
-        )
-        HruEmbed = Embed(
-            title="Question: How are you?",
-            description="I'm alright, what about you?",
-            colour=Colour.blue()
-        )
-        HruEmbed2 = Embed(
-            title=f"{random.choice(['Nice!', 'Epic.', 'Awesome.', 'empic'])}",
-            colour=Colour.green()
-        )
-        HruEmbed3 = Embed(
-            title="That's, kinda bad.",
-            description="To lighten your mood up a bit, here are some options.",
-            colour=Colour.blue()
-        )
-        HruEmbed4 = Embed(
-            title="Okay cool.",
-            description="If you're kinda bored, here are some options to entertain yourself.",
-            colour=Colour.blue()
-        )
-        MainPage = Embed(
-            title=f"Hello {setting.user(ctx.author)}!",
-            description="If you're kinda bored, pick any one of these options.",
-            colour=Colour.blue()
-        )
-        WDYPAGE = Embed(
-            title=f"To keep you entertained, here are some options.",
-            colour=Colour.blue()
-        )
-        HalloEmbed.set_footer(text="correction: not whatever you want, the options i gib u.")
-        msg = await ctx.send(embed=HalloEmbed, view=halloview)
-        async def btn1_callback(interaction):
-            await msg.edit(embed=HalloEmbed2, view=hallo2view)
+    get_cool_steel.set_image(url=cool_steel_png)
+    get_harbinger_of_dawn = Embed(
+        title="Wish",
+        description="Harbinger of Dawn",
+        colour=Colour.blue()
+    )
+    get_harbinger_of_dawn.set_image(url=harbinger_png)
+    get_white_tassel = Embed(
+        title="Wish",
+        description="White Tassel",
+        colour=Colour.blue()
+    )
+    get_white_tassel.set_image(url=white_tassel_png)
+    get_black_tassel = Embed(
+        title="Wish",
+        description="Black Tassel",
+        colour=Colour.blue()
+    )
+    get_black_tassel.set_image(url=black_tassel_png)
+    get_debate_club = Embed(
+        title="Wish",
+        description="Debate Club",
+        colour=Colour.blue()
+    )
+    get_debate_club.set_image(url=debate_png)
+    get_thrilling_tales = Embed(
+        title="Wish",
+        description="Thrilling Tales of Dragon Slayers",
+        colour=Colour.blue()
+    )
+    get_thrilling_tales.set_image(url=thrilling_tales_png)
+    get_xinyan = Embed(
+        title="Wish",
+        description="Xinyan",
+        colour=Colour.purple()
+    )
+    get_xinyan.set_image(url=xinyan_png)
+    get_bennett = Embed(
+        title="Wish",
+        description="Bennett",
+        colour=Colour.purple()
+    )
+    get_bennett.set_image(url=bennett_png)
+    get_beidou = Embed(
+        title="Wish",
+        description="Beidou",
+        colour=Colour.purple()
+    )
+    get_beidou.set_image(url=beidou_png)
+    get_kujou = Embed(
+        title="Wish",
+        description="Kujou Sara",
+        colour=Colour.purple()
+    )
+    get_kujou.set_image(url=kujou_sara_png)
+    get_xingqiu = Embed(
+        title="Wish",
+        description="Xingqiu",
+        colour=Colour.purple()
+    )
+    get_xingqiu.set_image(url=xingqiu_png)
+    get_kokomi = Embed(
+        title="Wish",
+        description=f"Sangnomiya Koko{random.choice(['nut', 'mi'])}",
+        colour=Colour.gold()
+    )
+    get_kokomi.set_image(url=kokomi_png)
+    get_raiden = Embed(
+        title="Wish",
+        description=f"Raiden Sho{random.choice(['', 't'])}gun",
+        colour=Colour.gold()
+    )
+    get_raiden.set_image(url=raiden_png)
+    get_qiqi = Embed(
+        title="Wish",
+        description=f"{random.choice(['ur more unlucky than bennett ngl', ''])}"
+    )
+    selection_embed = Embed(
+        title="Wish",
+        description="Which banner do you want to wish on?"
+    )
+    raiden_rerun = Embed(
+        title="Wish",
+        description="Raiden Shogun Rerun (Limited Banner 1)",
+        colour=Colour.dark_purple()
+    )
+    kokomi_rerun = Embed(
+        title="Wish",
+        description="Sangnomiya Kokomi Rerun (Limited Banner 2)",
+        colour=Colour.blue()
+    )
+    pull5Star = Embed(
+        title="Wish",
+        colour=Colour.gold()
+    )
+    pull4star = Embed(
+        title="Wish",
+        colour=Colour.purple()
+    )
+    kokomi_rerun.set_image(url=kokomi_banner_png)
+    pull4star.set_image(url=four_star_gif)
+    pull5Star.set_image(url=five_star_gif)
+    raiden_rerun.set_image(url=raiden_banner_png)
+    raiden = Button(label="Raiden Rerun", style=ButtonStyle.primary)
+    button1 = Button(label="Wish 10x", style=ButtonStyle.green)
+    kokomi = Button(label="Kokomi Rerun", style=ButtonStyle.primary)
+    weapon = Button(label="Weapon Banner", style=ButtonStyle.primary)
+    standard = Button(label="Standard Banner", style=ButtonStyle.primary)
+    skipanimation = Button(label="Skip", style=ButtonStyle.primary)
+    skip = Button(label="Skip", style=ButtonStyle.primary)
+    skipall = Button(label="Skip all", style=ButtonStyle.primary)
+    exit = Button(label="End interaction", style=ButtonStyle.gray)
+    viewtype1 = View()
+    viewtype2 = View()
+    viewtype3 = View()
+    viewtype4 = View()
+    viewtype3.add_item(skipanimation)
+    viewtype4.add_item(skip)
+    viewtype4.add_item(skipall)
+    viewtype4.add_item(exit)
+    viewtype2.add_item(button1)
+    viewtype2.add_item(exit)
+    viewtype1.add_item(raiden)
+    viewtype1.add_item(kokomi)
+    viewtype1.add_item(weapon)
+    viewtype1.add_item(standard)
+    viewtype1.add_item(exit)
+    msg = await ctx.send(embed=selection_embed, view=viewtype1)
+    async def event_wish_1(interaction):
+        await msg.edit(embed=raiden_rerun, view=viewtype2)
+        async def raiden_callback(interaction):
+            is5Star = random.choice([True, False])
+            multiple4Stars = random.choice([True, False])
+            if is5Star is True:
+                isstandard5 = random.choice([True, False])
+                multiple5Stars = random.choice([True, False])
+                if isstandard5 is True:
+                    if multiple5Stars is True:
+                        global amtoffivestars
+                        global fivestarstr
+                        amtoffivestars = random.randrange(1, 4)
+                        fivestar = random.choice(["Diluc", "Qiqi", "Mona", "Keqing", "Jean"])
+                        fivestarstr = f"{fivestar} x{amtoffivestars}"
+                    else:
+                        amtoffivestars = 1
+                        fivestar = random.choice(["Diluc", "Qiqi", "Mona", "Keqing", "Jean"])
+                        fivestarstr = f"{fivestar} x{amtoffivestars}"
+                else:
+                    if multiple5Stars is True:
+                        amtoffivestars = random.randrange(1, 4)
+                        fivestar = "Raiden Shogun"
+                        fivestarstr = f"{fivestar} x{amtoffivestars}"
+                    else:
+                        amtoffivestars = 1
+                        fivestar = "Raiden Shogun"
+                        fivestarstr = f"{fivestar} x{amtoffivestars}"
+            else:
+                if multiple4Stars is True:
+                    global fourstaramt
+                    global fourstarstr
+                    fourstaramt = random.randrange(1, 3)
+                    fourstar = random.choice(['Xinyan', 'Bennett', 'Kujou Sara', 'Beidou', 'Xingqiu'])
+                    fourstarstr = f"{fourstar} x{fourstaramt}"
+                else:
+                    fourstaramt = 1
+                    fourstar = random.choice(['Xinyan', 'Bennett', 'Kujou Sara', 'Beidou', 'Xingqiu'])
+                    fourstarstr = f"{fourstar} x{fourstaramt}"
+            threestar = random.choice(['Cool Steel', 'Harbinger of Dawn', 'Debate Club', 'White Tassel', 'Black Tassel', 'Thrilling Tales of Dragon Slayers'])
+            threestar2 = random.choice(
+                ['Cool Steel', 'Harbinger of Dawn', 'Debate Club', 'White Tassel', 'Black Tassel',
+                 'Thrilling Tales of Dragon Slayers'])
+            if threestar == threestar2:
+                threestar2 = random.choice(
+                    ['Cool Steel', 'Harbinger of Dawn', 'Debate Club', 'White Tassel', 'Black Tassel',
+                     'Thrilling Tales of Dragon Slayers'])
+            if is5Star is True:
+                threestaramt = 10 - (fourstaramt + amtoffivestars)
+                amt1 = round(threestaramt / 2)
+                amt2 = str(abs(10 - (threestaramt + amt1)))
+            else:
+                threestaramt = 10 - fourstaramt
+                amt1 = round(threestaramt / 2)
+                amt2 = str(abs(10 - (threestaramt + amt1)))
+            if '-' in amt2:
+                amt2 = abs(int(amt2))
+            amt1 = int(amt1)
+            amt2 = int(amt2)
+            if is5Star is True:
+                if (int(amt1)+int(amt2))+(fourstaramt+amtoffivestars) != 10:
+                    amttochange = 10 - (int(amt1)+int(amt2)+int(fourstaramt)+int(amtoffivestars))
+                    whichtochange = random.choice(['amt1', 'amt2'])
+                    if whichtochange == "amt1":
+                        amt1 += amttochange
+                    else:
+                        amt2 += amttochange
+                else:
+                    pass
+            else:
+                if (int(amt1)+int(amt2))+fourstaramt != 10:
+                    amttochange = 10 - (int(amt1)+int(amt2)+int(fourstaramt))
+                    whichtochange = random.choice(['amt1', 'amt2'])
+                    if whichtochange == "amt1":
+                        amt1 += amttochange
+                    else:
+                        amt2 += amttochange
+                else:
+                    pass
+            threestarstr = f"{threestar} x{amt1}\n{threestar2} x{amt2}"
+            if is5Star is True:
+                pull = Embed(
+                    title="Wish",
+                    description=f"Banner: Raiden Shogun 1st Rerun (1st Character Event Wish Banner)",
+                    colour=Colour.blue()
+                )
+                pull.add_field(name="Five stars:", value=fivestarstr, inline=False)
+                pull.add_field(name="Four stars:", value=fourstarstr, inline=False)
+                pull.add_field(name="Three stars:", value=threestarstr, inline=False)
+                await msg.edit(embed=pull5Star, view=viewtype3)
+                time.sleep(6)
+                await msg.edit(embed=pull, view=viewtype4)
+            else:
+                pull = Embed(
+                    title="Wish",
+                    description=f"Banner: Raiden Shogun 1st Rerun (1st Character Event Wish Banner)",
+                    colour=Colour.blue()
+                )
+                pull.add_field(name="Four stars:", value=fourstarstr, inline=False)
+                pull.add_field(name="Three stars:", value=threestarstr, inline=False)
+                await msg.edit(embed=pull4star, view=viewtype3)
+                time.sleep(6)
+                await msg.edit(embed=pull, view=viewtype4)
 
-        async def btn2_callback(interaction):
-            await msg.edit(embed=HruEmbed, view=hruview)
 
-        async def good_callback(interaction):
-            await msg.edit(embed=HruEmbed2, view=hru2view)
+        button1.callback = raiden_callback
 
-        async def bad_callback(interaction):
-            await msg.edit(embed=HruEmbed3, view=hru3view)
+    async def limitedbanner2(interaction):
+        await msg.edit(embed=kokomi_rerun, view=viewtype2)
+        async def kokomi_callback(interaction):
+            is5Star = random.choice([True, False])
+            multiple4Stars = random.choice([True, False])
+            if is5Star is True:
+                isstandard5 = random.choice([True, False])
+                multiple5Stars = random.choice([True, False])
+                if isstandard5 is True:
+                    if multiple5Stars is True:
+                        global amtoffivestars
+                        global fivestarstr
+                        amtoffivestars = random.randrange(1, 4)
+                        fivestar = random.choice(["Diluc", "Qiqi", "Mona", "Keqing", "Jean"])
+                        fivestarstr = f"{fivestar} x{amtoffivestars}"
+                    else:
+                        amtoffivestars = 1
+                        fivestar = random.choice(["Diluc", "Qiqi", "Mona", "Keqing", "Jean"])
+                        fivestarstr = f"{fivestar} x{amtoffivestars}"
+                else:
+                    if multiple5Stars is True:
+                        amtoffivestars = random.randrange(1, 4)
+                        fivestar = "Sangonomiya Kokomi"
+                        fivestarstr = f"{fivestar} x{amtoffivestars}"
+                    else:
+                        amtoffivestars = 1
+                        fivestar = "Sangonomiya Kokomi"
+                        fivestarstr = f"{fivestar} x{amtoffivestars}"
+            else:
+                if multiple4Stars is True:
+                    global fourstaramt
+                    global fourstarstr
+                    fourstaramt = random.randrange(1, 3)
+                    fourstar = random.choice(['Xinyan', 'Bennett', 'Kujou Sara', 'Beidou', 'Xingqiu'])
+                    fourstarstr = f"{fourstar} x{fourstaramt}"
+                else:
+                    fourstaramt = 1
+                    fourstar = random.choice(['Xinyan', 'Bennett', 'Kujou Sara', 'Beidou', 'Xingqiu'])
+                    fourstarstr = f"{fourstar} x{fourstaramt}"
+            threestar = random.choice(['Cool Steel', 'Harbinger of Dawn', 'Debate Club', 'White Tassel', 'Black Tassel',
+                                       'Thrilling Tales of Dragon Slayers'])
+            threestar2 = random.choice(['Cool Steel', 'Harbinger of Dawn', 'Debate Club', 'White Tassel', 'Black Tassel',
+                                       'Thrilling Tales of Dragon Slayers'])
+            if threestar == threestar2:
+                threestar2 = random.choice(['Cool Steel', 'Harbinger of Dawn', 'Debate Club', 'White Tassel', 'Black Tassel',
+                                       'Thrilling Tales of Dragon Slayers'])
+            if is5Star is True:
+                threestaramt = 10 - (fourstaramt+amtoffivestars)
+                amt1 = round(threestaramt/2)
+                amt2 = 10 - (threestaramt+amt1)
+            else:
+                threestaramt = 10 - fourstaramt
+                amt1 = round(threestaramt/2)
+                amt2 = abs(10 - (threestaramt+amt1))
+            threestarstr = f"{threestar} x{amt1}\n{threestar2} x{amt2}"
+            if is5Star is True:
+                pullyes = Embed(
+                    title="Wish",
+                    description=f"Banner: Sangonomiya Kokomi 1st Rerun (2nd Character Event Wish Banner)",
+                    colour=Colour.blue()
+                )
+                pullyes.add_field(name="Five stars:", value=fivestarstr, inline=False)
+                pullyes.add_field(name="Four stars:", value=fourstarstr, inline=False)
+                pullyes.add_field(name="Three stars:", value=threestarstr, inline=False)
+                noomsg = await msg.edit(embed=pull5Star, view=None)
+                time.sleep(6)
+                await noomsg.edit(embed=pullyes)
+            else:
+                pullyes = Embed(
+                    title="Wish",
+                    description=f"Banner: Sangonomiya Kokomi 1st Rerun (2nd Character Event Wish Banner)",
+                    colour=Colour.blue()
+                )
+                pullyes.add_field(name="Four stars:", value=fourstarstr, inline=False)
+                pullyes.add_field(name="Three stars:", value=threestarstr, inline=False)
+                await msg.edit(embed=pull4star, view=None)
+                time.sleep(6)
+                await msg.edit(embed=pullyes)
+        button1.callback = kokomi_callback
 
-        async def average_callback(interaction):
-            await msg.edit(embed=HruEmbed4, view=hru3view)
+    async def exit_callback(interaction):
+        await msg.edit(view=None)
 
-        async def rslashcute(interaction):
-            loading = Embed(
-                title="Hold on",
-                description=f"Wait for some time {setting.user(ctx.author)}. Dvalin is searching r/cute."
-            )
-            newmsg = await msg.edit(embed=loading, view=None)
-            subreddit = await reddit.subreddit(random.choice(['cute', 'cats', 'dogs']))
-            allsubs = []
-            x = random.choice(['top', 'hot', 'new'])
-            if x == 'top':
-                subs = subreddit.top(limit=75)
-            elif x == 'hot':
-                subs = subreddit.hot(limit=250)
-            elif x == 'new':
-                subs = subreddit.hot(limit=150)
-            async for submission in subs:
-                allsubs.append(submission)
-            random_sub = random.choice(allsubs)
-            name = random_sub.title
-            url = random_sub.url
-            cuteEmbed = Embed(
-                title=name,
-                colour=Colour.blue()
-            )
-            cuteEmbed.set_image(url=url)
-            cuteEmbed.set_footer(text=f"Posted by {submission.author}.")
-            global cutemsg
-            cutemsg = await newmsg.edit(embed=cuteEmbed, view=cuteview)
+    exit.callback = exit_callback
+    raiden.callback = event_wish_1
+    kokomi.callback = limitedbanner2
 
-        async def main_page(interaction):
-            await msg.edit(embed=MainPage, view=hru3view)
 
-        async def next_post_cute(interaction):
-            await type_cute(user=setting.user(ctx.author), msg=cutemsg, button=button10, view=cuteview, reddit=reddit)
+@bot.command()
+async def help(ctx):
+    nextemoji = "➡"
+    backemoji = "⬅"
+    nextbutton = Button(style=ButtonStyle.primary, emoji=nextemoji)
+    nextdisabled = Button(style=ButtonStyle.primary, emoji=nextemoji, disabled=True)
+    backbutton = Button(style=ButtonStyle.primary, emoji=backemoji)
+    backdisabled = Button(style=ButtonStyle.primary, emoji=backemoji, disabled=True)
+    endbutton = Button(style=ButtonStyle.secondary, label="End Interaction")
+    mainpage = Embed(
+        title="Help",
+        description=f"Click on {backemoji} or {nextemoji} to change pages. To end this interaction click on End Interaction",
+        colour=Colour.purple()
+    )
+    firstpage = Embed(
+        title="Help",
+        description="This page is for the mod commands.",
+        colour=Colour.purple()
+    )
+    secondpage = Embed(
+        title="Help",
+        description="This page is for the \'fun\' commands.",
+        colour=Colour.purple()
+    )
+    firstpage.add_field(name="Mod commands:", value=".kick {user:Member} {reason=None}\n.ban {user:Member} {reason=None}\n.announce {description=None}\n.motd {imageurl} {title=None} {description=None}\n.qotd {question}", inline=False)
+    secondpage.add_field(name="Fun commands:", value=".wish\n.meme\n.subreddit {subreddit}", inline=False)
+    view1d = View()
+    view1d2 = View()
+    view2d = View()
+    viewalldisabled = View()
+    view1d.add_item(backdisabled)
+    view1d.add_item(nextbutton)
+    view1d.add_item(endbutton)
+    view1d2.add_item(backbutton)
+    view1d2.add_item(nextdisabled)
+    view1d2.add_item(endbutton)
+    view2d.add_item(backdisabled)
+    view2d.add_item(nextdisabled)
+    view2d.add_item(endbutton)
+    viewalldisabled.add_item(backdisabled)
+    viewalldisabled.add_item(nextdisabled)
+    msg = await ctx.send(embed=mainpage, view=view1d)
 
-        async def end_callback(interaction):
-            await msg.edit(view=None)
+    async def next_page(interaction):
+        global count
+        count = count+1
+        if count == 2:
+            await msg.edit(embed=firstpage, view=view1d)
+        elif count == 3:
+            await msg.edit(embed=secondpage, view=view1d2)
 
-        button11.callback = main_page
-        button9.callback = rslashcute
-        button10.callback = next_post_cute
-        button4.callback = end_callback
-        button6.callback = average_callback
-        button1.callback = btn1_callback
-        button2.callback = btn2_callback
-        button5.callback = good_callback
-        button7.callback = bad_callback
+    async def back_page(interaction):
+        c = count-1
+        if c == 2:
+            await msg.edit(embed=firstpage, view=view1d)
+
+    async def end_interaction(interaction):
+        await msg.edit(view=viewalldisabled)
+
+    nextbutton.callback = next_page
+    backbutton.callback = back_page
+    endbutton.callback = end_interaction
+
 
 
 async def open_account(user):
@@ -418,43 +752,5 @@ async def get_wallet_data():
     return users
 
 
-
-async def type_cute(user, msg, button, view, reddit):
-    loading = Embed(
-        title="Hold on",
-        description=f"Wait for some time {user}. Dvalin is searching r/cute."
-    )
-    newmsg = await msg.edit(embed=loading, view=None)
-    subreddit = await reddit.subreddit(random.choice(['cute', 'cats', 'dogs']))
-    allsubs = []
-    x = random.choice(['top', 'hot', 'new'])
-    if x == 'top':
-        subs = subreddit.top(limit=75)
-    elif x == 'hot':
-        subs = subreddit.hot(limit=250)
-    elif x == 'new':
-        subs = subreddit.hot(limit=150)
-    async for submission in subs:
-        allsubs.append(submission)
-    random_sub = random.choice(allsubs)
-    name = random_sub.title
-    url = random_sub.url
-    cuteEmbed = Embed(
-        title=name,
-        colour=Colour.blue()
-    )
-    cuteEmbed.set_image(url=url)
-    cuteEmbed.set_footer(text=f"Posted by {submission.author}.")
-    cutemsg = await newmsg.edit(embed=cuteEmbed, view=view)
-
-    async def next_post_cute(interaction):
-        await type_cute(user=user, msg=cutemsg, button=button, view=view, reddit=reddit)
-
-    button.callback = next_post_cute
-
-
-async def randsub():
-    return random.choice(['ksi', 'genshinimpact', 'technicallythetruh', 'gtaonline', 'discordapp', 'dvalinbot', 'askreddit', 'entitledparents', 'facepalm', 'hardware', 'history', 'humor', 'iphone', 'apple'])
-
-
 bot.run(setting.token())
+tracemalloc.stop()
