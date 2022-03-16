@@ -7,6 +7,7 @@ amtoffivestars = 0
 fourstaramt = 0
 count = 1
 count2 = 1
+fourstar = "None"
 fivestarstr = None
 fourstarstr = "Bennett x0 (maybe ur really unlucky)"
 setting = settings()
@@ -421,8 +422,34 @@ async def wish(ctx):
     get_raiden.set_image(url=raiden_png)
     get_qiqi = Embed(
         title="Wish",
-        description=f"{random.choice(['ur more unlucky than bennett ngl', ''])}"
+        description=f"{random.choice(['ur more unlucky than bennett ngl', 'i think you lost ur 50/50', 'Cheechee sucks', 'pov: you are unlucky'])}",
+        colour=Colour.red()
     )
+    get_qiqi.set_image(url=qiqi_png)
+    get_diluc = Embed(
+        title="Wish",
+        description=f"{random.choice(['Diluc', 'Dieluke', 'Deelook||[here](https://youtube.com/shorts/HE9tFixFjHg?feature=share)||'])}",
+        colour=Colour.gold()
+    )
+    get_diluc.set_image(url=diluc_png)
+    get_mona = Embed(
+        title="Wish",
+        description=f"Mona",
+        colour=Colour.gold()
+    )
+    get_mona.set_image(url=mona_png)
+    get_keqing = Embed(
+        title="Wish",
+        description=f"{random.choice(['cat', 'Keqing'])}",
+        colour=Colour.gold()
+    )
+    get_keqing.set_image(url=keqing_png)
+    get_jean = Embed(
+        title="Wish",
+        description=f"{random.choice(['Jean', 'Jeaneral', 'yeet'])}",
+        colour=Colour.gold()
+    )
+    get_jean.set_image(url=jean_png)
     selection_embed = Embed(
         title="Wish",
         description="Which banner do you want to wish on?"
@@ -455,16 +482,12 @@ async def wish(ctx):
     weapon = Button(label="Weapon Banner", style=ButtonStyle.primary)
     standard = Button(label="Standard Banner", style=ButtonStyle.primary)
     skipanimation = Button(label="Skip", style=ButtonStyle.primary)
-    skip = Button(label="Skip", style=ButtonStyle.primary)
-    skipall = Button(label="Skip all", style=ButtonStyle.primary)
     exit = Button(label="End interaction", style=ButtonStyle.gray)
     viewtype1 = View()
     viewtype2 = View()
     viewtype3 = View()
     viewtype4 = View()
     viewtype3.add_item(skipanimation)
-    viewtype4.add_item(skip)
-    viewtype4.add_item(skipall)
     viewtype4.add_item(exit)
     viewtype2.add_item(button1)
     viewtype2.add_item(exit)
@@ -506,6 +529,7 @@ async def wish(ctx):
                 if multiple4Stars is True:
                     global fourstaramt
                     global fourstarstr
+                    global fourstar
                     fourstaramt = random.randrange(1, 3)
                     fourstar = random.choice(['Xinyan', 'Bennett', 'Kujou Sara', 'Beidou', 'Xingqiu'])
                     fourstarstr = f"{fourstar} x{fourstaramt}"
@@ -554,6 +578,11 @@ async def wish(ctx):
                 else:
                     pass
             threestarstr = f"{threestar} x{amt1}\n{threestar2} x{amt2}"
+            syntax = {
+                "first": "five star",
+                "second": "four star",
+                "third": "three star"
+            }
             if is5Star is True:
                 pull = Embed(
                     title="Wish",
@@ -563,9 +592,3881 @@ async def wish(ctx):
                 pull.add_field(name="Five stars:", value=fivestarstr, inline=False)
                 pull.add_field(name="Four stars:", value=fourstarstr, inline=False)
                 pull.add_field(name="Three stars:", value=threestarstr, inline=False)
-                await msg.edit(embed=pull5Star, view=viewtype3)
+                if fivestar == "Diluc":
+                    pull.set_footer(text=f"{random.choice(['Deelook||[here](https://youtube.com/shorts/HE9tFixFjHg?feature=share)||', 'you got dieluke nice'])}")
+                await msg.edit(embed=pull5Star, view=None)
                 time.sleep(6)
-                await msg.edit(embed=pull, view=viewtype4)
+                if fivestar == "Diluc":
+                    await msg.edit(embed=get_diluc, view=viewtype4)
+                    time.sleep(1)
+                    if fourstar == "Xinyan":
+                        await msg.edit(embed=get_xinyan, view=viewtype4)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                    elif fourstar == "Bennett":
+                        await msg.edit(embed=get_bennett)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                    elif fourstar == "Kujou Sara":
+                        await msg.edit(embed=get_kujou)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                    elif fourstar == "Beidou":
+                        await msg.edit(embed=get_beidou)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                    elif fourstar == "Xingqiu":
+                        await msg.edit(embed=get_xingqiu)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                if fivestar == "Mona":
+                    await msg.edit(embed=get_mona, view=viewtype4)
+                    time.sleep(1)
+                    if fourstar == "Xinyan":
+                        await msg.edit(embed=get_xinyan)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                    elif fourstar == "Bennett":
+                        await msg.edit(embed=get_bennett)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                    elif fourstar == "Kujou Sara":
+                        await msg.edit(embed=get_kujou)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                    elif fourstar == "Beidou":
+                        await msg.edit(embed=get_beidou)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                    elif fourstar == "Xingqiu":
+                        await msg.edit(embed=get_xingqiu)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                if fivestar == "Keqing":
+                    await msg.edit(embed=get_keqing, view=viewtype4)
+                    time.sleep(1)
+                    if fourstar == "Xinyan":
+                        await msg.edit(embed=get_xinyan)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                    elif fourstar == "Bennett":
+                        await msg.edit(embed=get_bennett)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                    elif fourstar == "Kujou Sara":
+                        await msg.edit(embed=get_kujou)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                    elif fourstar == "Beidou":
+                        await msg.edit(embed=get_beidou)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                    elif fourstar == "Xingqiu":
+                        await msg.edit(embed=get_xingqiu)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                if fivestar == "Jean":
+                    await msg.edit(embed=get_jean, view=viewtype4)
+                    time.sleep(1)
+                    if fourstar == "Xinyan":
+                        await msg.edit(embed=get_xinyan)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                    elif fourstar == "Bennett":
+                        await msg.edit(embed=get_bennett)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                    elif fourstar == "Kujou Sara":
+                        await msg.edit(embed=get_kujou)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                    elif fourstar == "Beidou":
+                        await msg.edit(embed=get_beidou)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                    elif fourstar == "Xingqiu":
+                        await msg.edit(embed=get_xingqiu)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                if fivestar == "Qiqi":
+                    await msg.edit(embed=get_qiqi, view=viewtype4)
+                    time.sleep(1)
+                    if fourstar == "Xinyan":
+                        await msg.edit(embed=get_xinyan)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                    elif fourstar == "Bennett":
+                        await msg.edit(embed=get_bennett)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                    elif fourstar == "Kujou Sara":
+                        await msg.edit(embed=get_kujou)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                    elif fourstar == "Beidou":
+                        await msg.edit(embed=get_beidou)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                    elif fourstar == "Xingqiu":
+                        await msg.edit(embed=get_xingqiu)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                if fivestar == "Jean":
+                    await msg.edit(embed=get_jean, view=viewtype4)
+                    time.sleep(1)
+                    if fourstar == "Xinyan":
+                        await msg.edit(embed=get_xinyan)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                    elif fourstar == "Bennett":
+                        await msg.edit(embed=get_bennett)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                    elif fourstar == "Kujou Sara":
+                        await msg.edit(embed=get_kujou)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                    elif fourstar == "Beidou":
+                        await msg.edit(embed=get_beidou)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                    elif fourstar == "Xingqiu":
+                        await msg.edit(embed=get_xingqiu)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                if fivestar == "Raiden Shogun":
+                    await msg.edit(embed=get_raiden, view=viewtype4)
+                    time.sleep(1)
+                    if fourstar == "Xinyan":
+                        await msg.edit(embed=get_xinyan)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                    elif fourstar == "Bennett":
+                        await msg.edit(embed=get_bennett)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                    elif fourstar == "Kujou Sara":
+                        await msg.edit(embed=get_kujou)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                    elif fourstar == "Beidou":
+                        await msg.edit(embed=get_beidou)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                    elif fourstar == "Xingqiu":
+                        await msg.edit(embed=get_xingqiu)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
             else:
                 pull = Embed(
                     title="Wish",
@@ -574,11 +4475,560 @@ async def wish(ctx):
                 )
                 pull.add_field(name="Four stars:", value=fourstarstr, inline=False)
                 pull.add_field(name="Three stars:", value=threestarstr, inline=False)
-                await msg.edit(embed=pull4star, view=viewtype3)
+                await msg.edit(embed=pull4star, view=None)
                 time.sleep(6)
-                await msg.edit(embed=pull, view=viewtype4)
-
-
+                if fourstar == "Xinyan":
+                    await msg.edit(embed=get_xinyan)
+                    time.sleep(1)
+                    if threestar == "Cool Steel":
+                        await msg.edit(embed=get_cool_steel)
+                        time.sleep(2)
+                        if threestar2 == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(2)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(2)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(2)
+                            await msg.edit(embed=pull)
+                        elif "thrilling" in threestar2.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(2)
+                            await msg.edit(embed=pull)
+                        else:
+                            pass
+                    elif threestar == "Harbinger of Dawn":
+                        await msg.edit(embed=get_harbinger_of_dawn)
+                        time.sleep(1)
+                        if threestar2 == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(2)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(2)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(2)
+                            await msg.edit(embed=pull)
+                        elif "thrilling" in threestar2.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(2)
+                            await msg.edit(embed=pull)
+                        else:
+                            pass
+                    elif threestar == "White Tassel":
+                        await msg.edit(embed=get_white_tassel)
+                        time.sleep(1)
+                        if threestar2 == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(2)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(2)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(2)
+                            await msg.edit(embed=pull)
+                        elif "thrilling" in threestar2.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(2)
+                            await msg.edit(embed=pull)
+                        else:
+                            pass
+                    elif threestar == "Black Tassel":
+                        await msg.edit(embed=get_black_tassel)
+                        time.sleep(1)
+                        if threestar2 == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(2)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(2)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(2)
+                            await msg.edit(embed=pull)
+                        elif "thrilling" in threestar2.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(2)
+                            await msg.edit(embed=pull)
+                        else:
+                            pass
+                    elif "thrilling" in threestar.lower():
+                        await msg.edit(embed=get_thrilling_tales)
+                        time.sleep(1)
+                        if threestar2 == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(2)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(2)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(2)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(2)
+                            await msg.edit(embed=pull)
+                        else:
+                            pass
+                    else:
+                        pass
+                elif fourstar == "Bennett":
+                    await msg.edit(embed=get_bennett)
+                    time.sleep(1)
+                    if threestar == "Cool Steel":
+                        await msg.edit(embed=get_cool_steel)
+                        time.sleep(1)
+                        if threestar2 == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(2)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(2)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(2)
+                            await msg.edit(embed=pull)
+                        elif "thrilling" in threestar2.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(2)
+                            await msg.edit(embed=pull)
+                        else:
+                            pass
+                    elif threestar == "Harbinger of Dawn":
+                        await msg.edit(embed=get_harbinger_of_dawn)
+                        time.sleep(1)
+                        if threestar2 == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(2)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(2)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(2)
+                            await msg.edit(embed=pull)
+                        elif "thrilling" in threestar2.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(2)
+                            await msg.edit(embed=pull)
+                        else:
+                            pass
+                    elif threestar == "White Tassel":
+                        await msg.edit(embed=get_white_tassel)
+                        time.sleep(1)
+                        if threestar2 == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif "thrilling" in threestar2.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        else:
+                            pass
+                    elif threestar == "Black Tassel":
+                        await msg.edit(embed=get_black_tassel)
+                        time.sleep(1)
+                        if threestar2 == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif "thrilling" in threestar2.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        else:
+                            pass
+                    elif "thrilling" in threestar.lower():
+                        await msg.edit(embed=get_thrilling_tales)
+                        time.sleep(1)
+                        if threestar2 == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        else:
+                            pass
+                    else:
+                        pass
+                elif fourstar == "Kujou Sara":
+                    await msg.edit(embed=get_kujou)
+                    time.sleep(1)
+                    if threestar == "Cool Steel":
+                        await msg.edit(embed=get_cool_steel)
+                        time.sleep(1)
+                        if threestar2 == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif "thrilling" in threestar2.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        else:
+                            pass
+                    elif threestar == "Harbinger of Dawn":
+                        await msg.edit(embed=get_harbinger_of_dawn)
+                        time.sleep(1)
+                        if threestar2 == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif "thrilling" in threestar2.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        else:
+                            pass
+                    elif threestar == "White Tassel":
+                        await msg.edit(embed=get_white_tassel)
+                        time.sleep(1)
+                        if threestar2 == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif "thrilling" in threestar2.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        else:
+                            pass
+                    elif threestar == "Black Tassel":
+                        await msg.edit(embed=get_black_tassel)
+                        time.sleep(1)
+                        if threestar2 == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif "thrilling" in threestar2.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        else:
+                            pass
+                    elif "thrilling" in threestar.lower():
+                        await msg.edit(embed=get_thrilling_tales)
+                        time.sleep(1)
+                        if threestar2 == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        else:
+                            pass
+                    else:
+                        pass
+                elif fourstar == "Beidou":
+                    await msg.edit(embed=get_beidou)
+                    time.sleep(1)
+                    if threestar == "Cool Steel":
+                        await msg.edit(embed=get_cool_steel)
+                        time.sleep(1)
+                        if threestar2 == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif "thrilling" in threestar2.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        else:
+                            pass
+                    elif threestar == "Harbinger of Dawn":
+                        await msg.edit(embed=get_harbinger_of_dawn)
+                        time.sleep(1)
+                        if threestar2 == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif "thrilling" in threestar2.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        else:
+                            pass
+                    elif threestar == "White Tassel":
+                        await msg.edit(embed=get_white_tassel)
+                        time.sleep(1)
+                        if threestar2 == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif "thrilling" in threestar2.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        else:
+                            pass
+                    elif threestar == "Black Tassel":
+                        await msg.edit(embed=get_black_tassel)
+                        time.sleep(1)
+                        if threestar2 == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif "thrilling" in threestar2.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        else:
+                            pass
+                    elif "thrilling" in threestar.lower():
+                        await msg.edit(embed=get_thrilling_tales)
+                        time.sleep(1)
+                        if threestar2 == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        else:
+                            pass
+                    else:
+                        pass
+                elif fourstar == "Xingqiu":
+                    await msg.edit(embed=get_xingqiu)
+                    time.sleep(1)
+                    if threestar == "Cool Steel":
+                        await msg.edit(embed=get_cool_steel)
+                        time.sleep(1)
+                        if threestar2 == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif "thrilling" in threestar2.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        else:
+                            pass
+                    elif threestar == "Harbinger of Dawn":
+                        await msg.edit(embed=get_harbinger_of_dawn)
+                        time.sleep(1)
+                        if threestar2 == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif "thrilling" in threestar2.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        else:
+                            pass
+                    elif threestar == "White Tassel":
+                        await msg.edit(embed=get_white_tassel)
+                        time.sleep(1)
+                        if threestar2 == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif "thrilling" in threestar2.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        else:
+                            pass
+                    elif threestar == "Black Tassel":
+                        await msg.edit(embed=get_black_tassel)
+                        time.sleep(1)
+                        if threestar2 == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif "thrilling" in threestar2.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        else:
+                            pass
+                    elif "thrilling" in threestar.lower():
+                        await msg.edit(embed=get_thrilling_tales)
+                        time.sleep(1)
+                        if threestar2 == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        else:
+                            pass
+                    else:
+                        pass
+        time.sleep(1)
+        await msg.edit(view=viewtype4)
         button1.callback = raiden_callback
 
     async def limitedbanner2(interaction):
@@ -637,28 +5087,4449 @@ async def wish(ctx):
                 amt2 = abs(10 - (threestaramt+amt1))
             threestarstr = f"{threestar} x{amt1}\n{threestar2} x{amt2}"
             if is5Star is True:
-                pullyes = Embed(
+                pull = Embed(
                     title="Wish",
                     description=f"Banner: Sangonomiya Kokomi 1st Rerun (2nd Character Event Wish Banner)",
                     colour=Colour.blue()
                 )
-                pullyes.add_field(name="Five stars:", value=fivestarstr, inline=False)
-                pullyes.add_field(name="Four stars:", value=fourstarstr, inline=False)
-                pullyes.add_field(name="Three stars:", value=threestarstr, inline=False)
-                noomsg = await msg.edit(embed=pull5Star, view=None)
+                pull.add_field(name="Five stars:", value=fivestarstr, inline=False)
+                pull.add_field(name="Four stars:", value=fourstarstr, inline=False)
+                pull.add_field(name="Three stars:", value=threestarstr, inline=False)
+                if fivestar == "Diluc"
+                    pull.set_footer(text=f"{random.choice(['Deelook||[here](https://youtube.com/shorts/HE9tFixFjHg?feature=share)||', 'you got dieluke nice'])}")
+                await msg.edit(embed=pull5Star, view=None)
                 time.sleep(6)
-                await noomsg.edit(embed=pullyes)
+                time.sleep(6)
+                if fivestar == "Diluc":
+                    await msg.edit(embed=get_diluc, view=viewtype4)
+                    time.sleep(1)
+                    if fourstar == "Xinyan":
+                        await msg.edit(embed=get_xinyan, view=viewtype4)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                    elif fourstar == "Bennett":
+                        await msg.edit(embed=get_bennett)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                    elif fourstar == "Kujou Sara":
+                        await msg.edit(embed=get_kujou)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                    elif fourstar == "Beidou":
+                        await msg.edit(embed=get_beidou)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                    elif fourstar == "Xingqiu":
+                        await msg.edit(embed=get_xingqiu)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                if fivestar == "Mona":
+                    await msg.edit(embed=get_mona, view=viewtype4)
+                    time.sleep(1)
+                    if fourstar == "Xinyan":
+                        await msg.edit(embed=get_xinyan)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                    elif fourstar == "Bennett":
+                        await msg.edit(embed=get_bennett)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                    elif fourstar == "Kujou Sara":
+                        await msg.edit(embed=get_kujou)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                    elif fourstar == "Beidou":
+                        await msg.edit(embed=get_beidou)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                    elif fourstar == "Xingqiu":
+                        await msg.edit(embed=get_xingqiu)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                if fivestar == "Keqing":
+                    await msg.edit(embed=get_keqing, view=viewtype4)
+                    time.sleep(1)
+                    if fourstar == "Xinyan":
+                        await msg.edit(embed=get_xinyan)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                    elif fourstar == "Bennett":
+                        await msg.edit(embed=get_bennett)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                    elif fourstar == "Kujou Sara":
+                        await msg.edit(embed=get_kujou)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                    elif fourstar == "Beidou":
+                        await msg.edit(embed=get_beidou)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                    elif fourstar == "Xingqiu":
+                        await msg.edit(embed=get_xingqiu)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                if fivestar == "Jean":
+                    await msg.edit(embed=get_jean, view=viewtype4)
+                    time.sleep(1)
+                    if fourstar == "Xinyan":
+                        await msg.edit(embed=get_xinyan)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                    elif fourstar == "Bennett":
+                        await msg.edit(embed=get_bennett)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                    elif fourstar == "Kujou Sara":
+                        await msg.edit(embed=get_kujou)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                    elif fourstar == "Beidou":
+                        await msg.edit(embed=get_beidou)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                    elif fourstar == "Xingqiu":
+                        await msg.edit(embed=get_xingqiu)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                if fivestar == "Qiqi":
+                    await msg.edit(embed=get_qiqi, view=viewtype4)
+                    time.sleep(1)
+                    if fourstar == "Xinyan":
+                        await msg.edit(embed=get_xinyan)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                    elif fourstar == "Bennett":
+                        await msg.edit(embed=get_bennett)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                    elif fourstar == "Kujou Sara":
+                        await msg.edit(embed=get_kujou)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                    elif fourstar == "Beidou":
+                        await msg.edit(embed=get_beidou)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                    elif fourstar == "Xingqiu":
+                        await msg.edit(embed=get_xingqiu)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                if fivestar == "Jean":
+                    await msg.edit(embed=get_jean, view=viewtype4)
+                    time.sleep(1)
+                    if fourstar == "Xinyan":
+                        await msg.edit(embed=get_xinyan)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                    elif fourstar == "Bennett":
+                        await msg.edit(embed=get_bennett)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                    elif fourstar == "Kujou Sara":
+                        await msg.edit(embed=get_kujou)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                    elif fourstar == "Beidou":
+                        await msg.edit(embed=get_beidou)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                    elif fourstar == "Xingqiu":
+                        await msg.edit(embed=get_xingqiu)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                if fivestar == "Sangnomiya Kokomi":
+                    await msg.edit(embed=get_kokomi, view=viewtype4)
+                    time.sleep(1)
+                    if fourstar == "Xinyan":
+                        await msg.edit(embed=get_xinyan)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                    elif fourstar == "Bennett":
+                        await msg.edit(embed=get_bennett)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                    elif fourstar == "Kujou Sara":
+                        await msg.edit(embed=get_kujou)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                    elif fourstar == "Beidou":
+                        await msg.edit(embed=get_beidou)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
+                    elif fourstar == "Xingqiu":
+                        await msg.edit(embed=get_xingqiu)
+                        time.sleep(1)
+                        if threestar == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            if threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif threestar == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif "thrilling" in threestar2.lower():
+                                await msg.edit(embed=get_thrilling_tales)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        elif "thrilling" in threestar.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            if threestar2 == "Harbinger of Dawn":
+                                await msg.edit(embed=get_harbinger_of_dawn)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "White Tassel":
+                                await msg.edit(embed=get_white_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Black Tassel":
+                                await msg.edit(embed=get_black_tassel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            elif threestar2 == "Cool Steel":
+                                await msg.edit(embed=get_cool_steel)
+                                time.sleep(1)
+                                await msg.edit(embed=pull)
+                            else:
+                                pass
+                        else:
+                            pass
             else:
-                pullyes = Embed(
+                pull = Embed(
                     title="Wish",
-                    description=f"Banner: Sangonomiya Kokomi 1st Rerun (2nd Character Event Wish Banner)",
+                    description=f"Banner: Sangonomiya Kokomi 2nd Rerun (2nd Character Event Wish Banner)",
                     colour=Colour.blue()
                 )
-                pullyes.add_field(name="Four stars:", value=fourstarstr, inline=False)
-                pullyes.add_field(name="Three stars:", value=threestarstr, inline=False)
+                pull.add_field(name="Four stars:", value=fourstarstr, inline=False)
+                pull.add_field(name="Three stars:", value=threestarstr, inline=False)
                 await msg.edit(embed=pull4star, view=None)
                 time.sleep(6)
-                await msg.edit(embed=pullyes)
+                if fourstar == "Xinyan":
+                    await msg.edit(embed=get_xinyan)
+                    time.sleep(1)
+                    if threestar == "Cool Steel":
+                        await msg.edit(embed=get_cool_steel)
+                        time.sleep(2)
+                        if threestar2 == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(2)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(2)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(2)
+                            await msg.edit(embed=pull)
+                        elif "thrilling" in threestar2.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(2)
+                            await msg.edit(embed=pull)
+                        else:
+                            pass
+                    elif threestar == "Harbinger of Dawn":
+                        await msg.edit(embed=get_harbinger_of_dawn)
+                        time.sleep(1)
+                        if threestar2 == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(2)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(2)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(2)
+                            await msg.edit(embed=pull)
+                        elif "thrilling" in threestar2.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(2)
+                            await msg.edit(embed=pull)
+                        else:
+                            pass
+                    elif threestar == "White Tassel":
+                        await msg.edit(embed=get_white_tassel)
+                        time.sleep(1)
+                        if threestar2 == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(2)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(2)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(2)
+                            await msg.edit(embed=pull)
+                        elif "thrilling" in threestar2.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(2)
+                            await msg.edit(embed=pull)
+                        else:
+                            pass
+                    elif threestar == "Black Tassel":
+                        await msg.edit(embed=get_black_tassel)
+                        time.sleep(1)
+                        if threestar2 == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(2)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(2)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(2)
+                            await msg.edit(embed=pull)
+                        elif "thrilling" in threestar2.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(2)
+                            await msg.edit(embed=pull)
+                        else:
+                            pass
+                    elif "thrilling" in threestar.lower():
+                        await msg.edit(embed=get_thrilling_tales)
+                        time.sleep(1)
+                        if threestar2 == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(2)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(2)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(2)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(2)
+                            await msg.edit(embed=pull)
+                        else:
+                            pass
+                    else:
+                        pass
+                elif fourstar == "Bennett":
+                    await msg.edit(embed=get_bennett)
+                    time.sleep(1)
+                    if threestar == "Cool Steel":
+                        await msg.edit(embed=get_cool_steel)
+                        time.sleep(1)
+                        if threestar2 == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(2)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(2)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(2)
+                            await msg.edit(embed=pull)
+                        elif "thrilling" in threestar2.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(2)
+                            await msg.edit(embed=pull)
+                        else:
+                            pass
+                    elif threestar == "Harbinger of Dawn":
+                        await msg.edit(embed=get_harbinger_of_dawn)
+                        time.sleep(1)
+                        if threestar2 == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(2)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(2)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(2)
+                            await msg.edit(embed=pull)
+                        elif "thrilling" in threestar2.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(2)
+                            await msg.edit(embed=pull)
+                        else:
+                            pass
+                    elif threestar == "White Tassel":
+                        await msg.edit(embed=get_white_tassel)
+                        time.sleep(1)
+                        if threestar2 == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif "thrilling" in threestar2.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        else:
+                            pass
+                    elif threestar == "Black Tassel":
+                        await msg.edit(embed=get_black_tassel)
+                        time.sleep(1)
+                        if threestar2 == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif "thrilling" in threestar2.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        else:
+                            pass
+                    elif "thrilling" in threestar.lower():
+                        await msg.edit(embed=get_thrilling_tales)
+                        time.sleep(1)
+                        if threestar2 == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        else:
+                            pass
+                    else:
+                        pass
+                elif fourstar == "Kujou Sara":
+                    await msg.edit(embed=get_kujou)
+                    time.sleep(1)
+                    if threestar == "Cool Steel":
+                        await msg.edit(embed=get_cool_steel)
+                        time.sleep(1)
+                        if threestar2 == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif "thrilling" in threestar2.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        else:
+                            pass
+                    elif threestar == "Harbinger of Dawn":
+                        await msg.edit(embed=get_harbinger_of_dawn)
+                        time.sleep(1)
+                        if threestar2 == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif "thrilling" in threestar2.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        else:
+                            pass
+                    elif threestar == "White Tassel":
+                        await msg.edit(embed=get_white_tassel)
+                        time.sleep(1)
+                        if threestar2 == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif "thrilling" in threestar2.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        else:
+                            pass
+                    elif threestar == "Black Tassel":
+                        await msg.edit(embed=get_black_tassel)
+                        time.sleep(1)
+                        if threestar2 == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif "thrilling" in threestar2.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        else:
+                            pass
+                    elif "thrilling" in threestar.lower():
+                        await msg.edit(embed=get_thrilling_tales)
+                        time.sleep(1)
+                        if threestar2 == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        else:
+                            pass
+                    else:
+                        pass
+                elif fourstar == "Beidou":
+                    await msg.edit(embed=get_beidou)
+                    time.sleep(1)
+                    if threestar == "Cool Steel":
+                        await msg.edit(embed=get_cool_steel)
+                        time.sleep(1)
+                        if threestar2 == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif "thrilling" in threestar2.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        else:
+                            pass
+                    elif threestar == "Harbinger of Dawn":
+                        await msg.edit(embed=get_harbinger_of_dawn)
+                        time.sleep(1)
+                        if threestar2 == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif "thrilling" in threestar2.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        else:
+                            pass
+                    elif threestar == "White Tassel":
+                        await msg.edit(embed=get_white_tassel)
+                        time.sleep(1)
+                        if threestar2 == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif "thrilling" in threestar2.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        else:
+                            pass
+                    elif threestar == "Black Tassel":
+                        await msg.edit(embed=get_black_tassel)
+                        time.sleep(1)
+                        if threestar2 == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif "thrilling" in threestar2.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        else:
+                            pass
+                    elif "thrilling" in threestar.lower():
+                        await msg.edit(embed=get_thrilling_tales)
+                        time.sleep(1)
+                        if threestar2 == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        else:
+                            pass
+                    else:
+                        pass
+                elif fourstar == "Xingqiu":
+                    await msg.edit(embed=get_xingqiu)
+                    time.sleep(1)
+                    if threestar == "Cool Steel":
+                        await msg.edit(embed=get_cool_steel)
+                        time.sleep(1)
+                        if threestar2 == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif "thrilling" in threestar2.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        else:
+                            pass
+                    elif threestar == "Harbinger of Dawn":
+                        await msg.edit(embed=get_harbinger_of_dawn)
+                        time.sleep(1)
+                        if threestar2 == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif "thrilling" in threestar2.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        else:
+                            pass
+                    elif threestar == "White Tassel":
+                        await msg.edit(embed=get_white_tassel)
+                        time.sleep(1)
+                        if threestar2 == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif "thrilling" in threestar2.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        else:
+                            pass
+                    elif threestar == "Black Tassel":
+                        await msg.edit(embed=get_black_tassel)
+                        time.sleep(1)
+                        if threestar2 == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif "thrilling" in threestar2.lower():
+                            await msg.edit(embed=get_thrilling_tales)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        else:
+                            pass
+                    elif "thrilling" in threestar.lower():
+                        await msg.edit(embed=get_thrilling_tales)
+                        time.sleep(1)
+                        if threestar2 == "Harbinger of Dawn":
+                            await msg.edit(embed=get_harbinger_of_dawn)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "White Tassel":
+                            await msg.edit(embed=get_white_tassel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Black Tassel":
+                            await msg.edit(embed=get_black_tassel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        elif threestar2 == "Cool Steel":
+                            await msg.edit(embed=get_cool_steel)
+                            time.sleep(1)
+                            await msg.edit(embed=pull)
+                        else:
+                            pass
+                    else:
+                        pass
+            await msg.edit(view=viewtype4)
         button1.callback = kokomi_callback
 
     async def exit_callback(interaction):
